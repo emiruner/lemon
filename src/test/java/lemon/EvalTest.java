@@ -39,21 +39,4 @@ public class EvalTest {
         Evaluator.eval(parser.parse("(define undef)"), env);
         assertEquals(Undefined.TYPE, env.lookup(Symbol.intern("undef")).getType());
     }
-
-    @Test
-    public void complexEval() throws IOException {
-        InputStreamReader isr = new InputStreamReader(new FileInputStream("/work/Emr/documents/Gunluk/babacek.txt"));
-        BufferedReader br = new BufferedReader(isr);
-        StringBuilder sb = new StringBuilder();
-        String line;
-
-        while((line = br.readLine()) != null) {
-            sb.append(line).append("\n");
-        }
-
-        Parser parser = new Parser();
-        Environment env = EnvUtil.basicEnv(new Environment());
-
-        Evaluator.eval(parser.parse(sb.toString()), env);
-    }
 }
